@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>German Kaffee - Evento Pop-Up de Automóveis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+        
+        :root {
+            --coffee-brown: #8B5E3C;
+            --logo-black: #000000;
+            --off-white: #F9F9F9;
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--off-white); color: var(--logo-black); scroll-behavior: smooth; }
+        
+        h1, h2, h3, h4, .nav-link { 
+            font-family: 'Oswald', sans-serif; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+
+        .hero-bg {
+            background-color: var(--logo-black);
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('./hero_encontro_portugal.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 85vh;
+        }
+
+        .accent-coffee { color: var(--coffee-brown); }
+        .bg-coffee { background-color: var(--coffee-brown); }
+        .border-coffee { border-color: var(--coffee-brown); }
+
+        .btn-primary {
+            background-color: var(--coffee-brown);
+            color: white;
+            padding: 12px 24px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-transform: uppercase;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #6F4A30;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--coffee-brown);
+            color: var(--coffee-brown);
+            padding: 10px 22px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-transform: uppercase;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--coffee-brown);
+            color: white;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            border-left: 8px solid var(--coffee-brown);
+            padding-left: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .card-dark {
+            background-color: white;
+            border: 1px solid #E5E5E5;
+            transition: all 0.3s ease;
+        }
+
+        .card-dark:hover {
+            border-color: var(--coffee-brown);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--coffee-brown);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--coffee-brown);
+        }
+
+        /* Modal Styles */
+        #shopModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#inicio" class="flex items-center">
+                <img src="./logoGK_transparente.png" alt="German Kaffee Logo" class="h-12 md:h-16 w-auto">
+            </a>
+            <div class="hidden lg:flex space-x-6 items-center">
+                <a href="#sobre" class="nav-link text-gray-800">Sobre</a>
+                <a href="#equipa" class="nav-link text-gray-800">Equipa</a>
+                <a href="#fotografias" class="nav-link text-gray-800">Fotografias</a>
+                <a href="#loja" class="nav-link text-gray-800">Loja</a>
+                <a href="#parcerias" class="nav-link text-gray-800">Parcerias</a>
+                <a href="#contacto" class="btn-primary text-sm">Contacto</a>
+            </div>
+            <button class="lg:hidden text-gray-800">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="hero-bg text-white py-32 px-4 flex items-center justify-center text-center">
+        <div class="max-w-4xl">
+            <div class="inline-block mb-8">
+                <img src="./logoGK_transparente.png" alt="German Kaffee" class="h-48 md:h-72 mx-auto drop-shadow-[0_5px_15px_rgba(255,255,255,0.3)] brightness-0 invert">
+            </div>
+            <p class="text-xl md:text-2xl mb-12 font-light tracking-wide max-w-2xl mx-auto leading-relaxed">
+                ONDE A ENGENHARIA ALEMÃ ENCONTRA O CULTO DO CAFÉ E O CONVÍVIO ENTRE AMIGOS.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="#loja" class="btn-primary px-10">Ver Loja</a>
+                <a href="#parcerias" class="btn-outline border-white text-white hover:bg-white hover:text-black px-10">Parceiros</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-24 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="section-title">SOBRE O PROJETO</h2>
+                    <p class="text-gray-700 text-lg mb-8 leading-relaxed">
+                        German Kaffee é a fusão da paixão por automóveis clássicos alemães com o culto do café e convívio entre amigos.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        O nosso objetivo é criar um espaço onde entusiastas de automóveis e amantes de café possam partilhar a sua paixão, aprender e desfrutar de momentos únicos. Cada evento pop-up é uma celebração da engenharia, design e da cultura de convívio.
+                    </p>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="flex items-center gap-4 p-4 border-l-4 border-coffee bg-gray-50">
+                            <i class="fas fa-car accent-coffee text-xl"></i>
+                            <span class="font-semibold uppercase text-sm text-black">Clássicos Alemães em Destaque</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 border-l-4 border-coffee bg-gray-50">
+                            <i class="fas fa-mug-hot accent-coffee text-xl"></i>
+                            <span class="font-semibold uppercase text-sm text-black">Café de Especialidade</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 border-l-4 border-coffee bg-gray-50">
+                            <i class="fas fa-users accent-coffee text-xl"></i>
+                            <span class="font-semibold uppercase text-sm text-black">Convívio entre Entusiastas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -top-4 -left-4 w-full h-full border-2 border-coffee"></div>
+                    <img src="./comunidade_gk.webp" alt="Comunidade German Kaffee" class="relative z-10 grayscale hover:grayscale-0 transition duration-500 shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="equipa" class="py-24 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">A NOSSA EQUIPA</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="card-dark p-10 text-center">
+                    <div class="w-32 h-32 bg-gray-200 mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-user text-4xl text-gray-400"></i>
+                    </div>
+                    <h3 class="text-2xl mb-2">BRUNO</h3>
+                    <p class="accent-coffee font-bold mb-6 text-sm">FUNDADOR & PENSADOR</p>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        O visionário por trás do German Kaffee, responsável por imaginar os próximos passos e a direção do projeto.
+                    </p>
+                </div>
+                <div class="card-dark p-10 text-center">
+                    <div class="w-32 h-32 bg-gray-200 mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-user text-4xl text-gray-400"></i>
+                    </div>
+                    <h3 class="text-2xl mb-2">GONÇALO</h3>
+                    <p class="accent-coffee font-bold mb-6 text-sm">ASSISTENTE & EXECUTOR</p>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        O braço direito que ajuda a transformar as ideias em realidade, garantindo que cada edição do evento aconteça com sucesso.
+                    </p>
+                </div>
+                <div class="card-dark p-10 text-center border-dashed">
+                    <div class="w-32 h-32 border-2 border-dashed border-gray-300 mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-plus text-2xl text-gray-300"></i>
+                    </div>
+                    <h3 class="text-2xl mb-2 text-gray-400">CONVIDADO</h3>
+                    <p class="text-gray-400 font-bold mb-6 text-sm uppercase">ESPECIALISTA</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Em cada edição, convidamos especialistas para partilhar o seu conhecimento sobre automóveis ou café.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photos Section -->
+    <section id="fotografias" class="py-24 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">GALERIA DE MOMENTOS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <div class="lg:col-span-2 relative group overflow-hidden shadow-xl border border-gray-100">
+                    <img src="./comunidade_gk.webp" alt="Comunidade German Kaffee" class="w-full h-[500px] object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                    <div class="absolute bottom-0 left-0 w-full p-8 bg-black bg-opacity-80 translate-y-full group-hover:translate-y-0 transition duration-500">
+                        <p class="text-white font-bold uppercase tracking-widest text-lg">A Nossa Comunidade - Evento Pop-Up</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden shadow-lg border border-gray-100 h-80">
+                    <img src="./gk_galeria_1.png" alt="Detalhe Automóvel" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                    <div class="absolute inset-0 bg-coffee bg-opacity-20 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <p class="text-white font-bold uppercase tracking-widest border-2 border-white p-4">Engenharia</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden shadow-lg border border-gray-100 h-80">
+                    <img src="./gk_galeria_2.png" alt="Barista e Café" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                    <div class="absolute inset-0 bg-coffee bg-opacity-20 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <p class="text-white font-bold uppercase tracking-widest border-2 border-white p-4">Culto do Café</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="loja" class="py-24 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">LOJA GERMAN KAFFEE</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-dark group">
+                    <div class="h-80 overflow-hidden">
+                        <img src="./produto_tshirt.png" alt="T-shirt German Kaffee" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl mb-2">T-SHIRT HERITAGE</h3>
+                        <p class="text-gray-600 text-sm mb-6">Algodão premium com design exclusivo German Kaffee. Conforto e estilo para entusiastas.</p>
+                        <button onclick="openShopModal('T-SHIRT HERITAGE')" class="btn-primary w-full">Comprar</button>
+                    </div>
+                </div>
+                <div class="card-dark group">
+                    <div class="h-80 overflow-hidden">
+                        <img src="./produto_chavena.png" alt="Chávena German Kaffee" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl mb-2">CHÁVENA PREMIUM</h3>
+                        <p class="text-gray-600 text-sm mb-6">Chávena de cerâmica em preto mate. O companheiro perfeito para o seu ritual de café.</p>
+                        <button onclick="openShopModal('CHÁVENA PREMIUM')" class="btn-primary w-full">Comprar</button>
+                    </div>
+                </div>
+                <div class="card-dark group">
+                    <div class="h-80 overflow-hidden">
+                        <img src="./produto_poster.png" alt="Poster German Kaffee" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl mb-2">POSTER TÉCNICO</h3>
+                        <p class="text-gray-600 text-sm mb-6">Ilustração técnica de alta definição. Uma peça de arte para a sua garagem ou escritório.</p>
+                        <button onclick="openShopModal('POSTER TÉCNICO')" class="btn-primary w-full">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="parcerias" class="py-24 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">PARCERIAS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <!-- Parceiro 1 -->
+                <div class="text-center group">
+                    <div class="h-32 flex items-center justify-center grayscale group-hover:grayscale-0 transition duration-300 mb-4 border border-gray-100 p-4">
+                        <i class="fas fa-oil-can text-4xl text-gray-400 group-hover:text-coffee"></i>
+                    </div>
+                    <h4 class="text-sm font-bold mb-2">LUFT LUBRICANTS</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">Especialistas em lubrificantes de alta performance para motores arrefecidos a ar.</p>
+                </div>
+                <!-- Parceiro 2 -->
+                <div class="text-center group">
+                    <div class="h-32 flex items-center justify-center grayscale group-hover:grayscale-0 transition duration-300 mb-4 border border-gray-100 p-4">
+                        <i class="fas fa-seedling text-4xl text-gray-400 group-hover:text-coffee"></i>
+                    </div>
+                    <h4 class="text-sm font-bold mb-2">ROAST MASTERS</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">Torrefação artesanal que fornece os grãos exclusivos para cada edição do evento.</p>
+                </div>
+                <!-- Parceiro 3 -->
+                <div class="text-center group">
+                    <div class="h-32 flex items-center justify-center grayscale group-hover:grayscale-0 transition duration-300 mb-4 border border-gray-100 p-4">
+                        <i class="fas fa-tools text-4xl text-gray-400 group-hover:text-coffee"></i>
+                    </div>
+                    <h4 class="text-sm font-bold mb-2">HERITAGE GARAGE</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">Oficina especializada no restauro e manutenção de clássicos alemães de coleção.</p>
+                </div>
+                <!-- Parceiro 4 -->
+                <div class="text-center group">
+                    <div class="h-32 flex items-center justify-center grayscale group-hover:grayscale-0 transition duration-300 mb-4 border border-gray-100 p-4">
+                        <i class="fas fa-camera text-4xl text-gray-400 group-hover:text-coffee"></i>
+                    </div>
+                    <h4 class="text-sm font-bold mb-2">AUTO VISUALS</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">Coletivo de fotógrafos que captura a essência e os detalhes de cada German Kaffee.</p>
+                </div>
+                <!-- Parceiro 5 -->
+                <div class="text-center group">
+                    <div class="h-32 flex items-center justify-center grayscale group-hover:grayscale-0 transition duration-300 mb-4 border border-gray-100 p-4">
+                        <i class="fas fa-clock text-4xl text-gray-400 group-hover:text-coffee"></i>
+                    </div>
+                    <h4 class="text-sm font-bold mb-2">ZEIT DESIGN</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">Estúdio de design focado em estética minimalista e identidade visual automóvel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Modal -->
+    <div id="shopModal" class="flex items-center justify-center p-4">
+        <div class="bg-white max-w-lg w-full p-8 shadow-2xl relative">
+            <button onclick="closeShopModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <h2 id="modalProductTitle" class="text-3xl mb-6 border-l-8 border-coffee pl-4">PEDIDO DE COMPRA</h2>
+            <form id="shopForm" class="space-y-4">
+                <input type="hidden" id="productName">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest mb-2">Nome Completo</label>
+                    <input type="text" id="buyerName" required class="w-full px-4 py-3 border border-gray-200 focus:border-coffee outline-none" placeholder="O seu nome">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest mb-2">Email</label>
+                    <input type="email" id="buyerEmail" required class="w-full px-4 py-3 border border-gray-200 focus:border-coffee outline-none" placeholder="seu@email.com">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest mb-2">Mensagem / Notas</label>
+                    <textarea id="buyerMessage" rows="3" class="w-full px-4 py-3 border border-gray-200 focus:border-coffee outline-none" placeholder="Tamanho, cor ou outras notas..."></textarea>
+                </div>
+                <button type="submit" class="w-full btn-primary font-bold">Enviar Pedido por Email</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-24 px-4 bg-black text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8 border-l-8 border-coffee pl-6 uppercase inline-block">Contactos</h2>
+            <p class="text-gray-400 mb-12">Interessado em participar ou colaborar? Envie-nos uma mensagem.</p>
+            <div class="flex flex-col items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-envelope accent-coffee text-xl"></i>
+                    <span class="tracking-wider">TYPETALKSPT@GMAIL.COM</span>
+                </div>
+                <div class="flex gap-6 mt-4">
+                    <a href="#" class="text-2xl hover:text-coffee transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-2xl hover:text-coffee transition"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div class="text-center md:text-left">
+                    <img src="./logoGK_transparente.png" alt="German Kaffee Logo" class="h-12 mx-auto md:mx-0 mb-6">
+                    <p class="text-gray-500 text-sm">Onde a engenharia alemã encontra o culto do café e o convívio entre amigos.</p>
+                </div>
+                <div class="text-center">
+                    <h4 class="mb-6">Links Rápidos</h4>
+                    <div class="flex flex-col space-y-2 text-sm text-gray-500">
+                        <a href="#sobre" class="hover:text-coffee transition">Sobre</a>
+                        <a href="#equipa" class="hover:text-coffee transition">Equipa</a>
+                        <a href="#loja" class="hover:text-coffee transition">Loja</a>
+                        <a href="#parcerias" class="hover:text-coffee transition">Parcerias</a>
+                    </div>
+                </div>
+                <div class="text-center md:text-right">
+                    <h4 class="mb-6">Newsletter</h4>
+                    <p class="text-gray-500 text-sm mb-4">Fique a par dos próximos eventos pop-up.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="O seu email" class="bg-gray-100 px-4 py-2 w-full outline-none border-b border-gray-300 focus:border-coffee">
+                        <button class="bg-coffee text-white px-4 py-2"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-gray-100 text-center">
+                <p class="text-gray-400 text-xs tracking-widest uppercase">
+                    &copy; 2026 GERMAN KAFFEE. TODOS OS DIREITOS RESERVADOS.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openShopModal(product) {
+            document.getElementById('productName').value = product;
+            document.getElementById('modalProductTitle').innerText = 'PEDIDO: ' + product;
+            document.getElementById('shopModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeShopModal() {
+            document.getElementById('shopModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('shopForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const product = document.getElementById('productName').value;
+            const name = document.getElementById('buyerName').value;
+            const email = document.getElementById('buyerEmail').value;
+            const message = document.getElementById('buyerMessage').value;
+            
+            const subject = encodeURIComponent('Pedido de Compra: ' + product);
+            const body = encodeURIComponent(
+                'Olá German Kaffee,\n\n' +
+                'Gostaria de fazer um pedido para o seguinte produto:\n' +
+                'Produto: ' + product + '\n\n' +
+                'Dados do Cliente:\n' +
+                'Nome: ' + name + '\n' +
+                'Email: ' + email + '\n\n' +
+                'Mensagem/Notas:\n' +
+                message
+            );
+            
+            window.location.href = 'mailto:typetalkspt@gmail.com?subject=' + subject + '&body=' + body;
+            
+            alert('O seu cliente de email será aberto para enviar o pedido. Obrigado!');
+            closeShopModal();
+            this.reset();
+        });
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('shopModal');
+            if (event.target == modal) {
+                closeShopModal();
+            }
+        }
+
+        // Mobile menu toggle (simple version)
+        document.querySelector('.lg\\:hidden').addEventListener('click', function() {
+            const nav = document.querySelector('.lg\\:flex');
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('flex');
+            nav.classList.toggle('flex-col');
+            nav.classList.toggle('absolute');
+            nav.classList.toggle('top-full');
+            nav.classList.toggle('left-0');
+            nav.classList.toggle('w-full');
+            nav.classList.toggle('bg-white');
+            nav.classList.toggle('p-4');
+            nav.classList.toggle('shadow-lg');
+        });
+    </script>
+</body>
+</html>
